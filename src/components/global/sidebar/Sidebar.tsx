@@ -1,7 +1,11 @@
 'use client'
+import { animated, useSpring } from '@react-spring/web'
 import { x } from '@xstyled/styled-components'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useRecoilState } from 'recoil'
+import { ToggleSidebarButton } from '~/components/global/sidebar/ToggleSidebarButton'
+import { isOpenSidebarState } from '~/state/isOpenSidebarState'
 
 const LinkItem = ({ path, name }: { path: string; name: string }) => {
   const currentPath = usePathname()
@@ -31,10 +35,16 @@ const LinkItem = ({ path, name }: { path: string; name: string }) => {
 }
 
 export const Sidebar = () => {
+  const [isOpenSidebar] = useRecoilState(isOpenSidebarState)
+  const sidebarAnimationProps = useSpring({ width: isOpenSidebar ? 300 : 0 })
+
   return (
-    <x.nav w="200px" flexShrink={0} backgroundColor="sidebar.bg">
-      <LinkItem path="/" name="Home" />
-      <LinkItem path="/xstyledTest" name="xstyled" />
-    </x.nav>
+    <animated.div style={{ ...sidebarAnimationProps, overflow: 'hidden' }}>
+      <x.nav w="200px" h="100vh" flexShrink={0} backgroundColor="sidebar.bg">
+        <LinkItem path="/" name="Home" />
+        <LinkItem path="/xstyledTest" name="xstyled" />
+        <ToggleSidebarButton />
+      </x.nav>
+    </animated.div>
   )
 }
