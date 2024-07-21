@@ -4,7 +4,7 @@ import { x } from '@xstyled/styled-components'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useRecoilState } from 'recoil'
-import { CloseSidebarButton } from '~/components/global/sidebar/CloseSidebarButton'
+import { ToggleSidebarButton } from '~/components/global/sidebar/ToggleSidebarButton'
 import { isOpenSidebarState } from '~/state/isOpenSidebarState'
 
 const LinkItem = ({ path, name }: { path: string; name: string }) => {
@@ -43,7 +43,7 @@ export const Sidebar = () => {
       <x.nav w="200px" h="100vh" flexShrink={0} backgroundColor="sidebar.bg">
         <LinkItem path="/" name="Home" />
         <LinkItem path="/xstyledTest" name="xstyled" />
-        <CloseSidebarButton />
+        <ToggleSidebarButton />
       </x.nav>
     </animated.div>
   )

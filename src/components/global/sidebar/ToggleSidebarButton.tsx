@@ -4,7 +4,7 @@ import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import { useRecoilState } from 'recoil'
 import { isOpenSidebarState } from '~/state/isOpenSidebarState'
 
-export const CloseSidebarButton = () => {
+export const ToggleSidebarButton = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useRecoilState(isOpenSidebarState)
   const buttonPositionProps = useSpring({ left: isOpenSidebar ? 145 : 10 })
 
