@@ -4,6 +4,7 @@ import {
   ThemeProvider,
   Preflight,
 } from '@xstyled/styled-components'
+import { RecoilRoot } from 'recoil'
 import { commonThemes } from '~/styles/commonThemes'
 
 const theme = {
@@ -13,9 +14,11 @@ const theme = {
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Preflight />
-      {children}
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider theme={theme}>
+        <Preflight />
+        {children}
+      </ThemeProvider>
+    </RecoilRoot>
   )
 }
