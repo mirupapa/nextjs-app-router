@@ -1,3 +1,5 @@
+'use client'
+
 import { animated, useSpring } from '@react-spring/web'
 import { x } from '@xstyled/styled-components'
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'

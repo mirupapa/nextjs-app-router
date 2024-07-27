@@ -9,22 +9,26 @@ import { isOpenSidebarState } from '~/state/isOpenSidebarState'
 
 const LinkItem = ({ path, name }: { path: string; name: string }) => {
   const currentPath = usePathname()
+
+  const isMatchPath =
+    currentPath === '/'
+      ? currentPath === path
+      : path !== '/' && currentPath.startsWith(path)
+
   return (
     <Link href={path}>
       <x.div
         p="12px"
         color={{
-          _:
-            path === currentPath
-              ? 'sidebar.linkItem.fg.active'
-              : 'sidebar.linkItem.fg.default',
+          _: isMatchPath
+            ? 'sidebar.linkItem.fg.active'
+            : 'sidebar.linkItem.fg.default',
           hover: 'sidebar.linkItem.fg.hover',
         }}
         backgroundColor={{
-          _:
-            path === currentPath
-              ? 'sidebar.linkItem.bg.active'
-              : 'sidebar.linkItem.bg.default',
+          _: isMatchPath
+            ? 'sidebar.linkItem.bg.active'
+            : 'sidebar.linkItem.bg.default',
           hover: 'sidebar.linkItem.bg.hover',
         }}
       >
@@ -36,14 +40,16 @@ const LinkItem = ({ path, name }: { path: string; name: string }) => {
 
 export const Sidebar = () => {
   const [isOpenSidebar] = useRecoilState(isOpenSidebarState)
-  const sidebarAnimationProps = useSpring({ width: isOpenSidebar ? 300 : 0 })
+  const sidebarAnimationProps = useSpring({ width: isOpenSidebar ? 200 : 0 })
 
   return (
-    <animated.div style={{ ...sidebarAnimationProps, overflow: 'hidden' }}>
+    <animated.div
+      style={{ ...sidebarAnimationProps, overflow: 'hidden', flexShrink: 0 }}
+    >
       <x.nav w="200px" h="100vh" flexShrink={0} backgroundColor="sidebar.bg">
         <LinkItem path="/" name="Home" />
         <LinkItem path="/xstyledTest" name="xstyled" />
-        <ToggleSidebarButton />
+        <LinkItem path="/listAndDetail" name="listAndDetail" />
       </x.nav>
     </animated.div>
   )

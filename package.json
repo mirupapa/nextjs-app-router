@@ -10,8 +10,11 @@
     "typesync": "typesync"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@react-spring/web": "*",
+    "@tanstack/react-table": "^8.19.3",
     "@xstyled/styled-components": "^4.0.0",
+    "dayjs": "^1.11.12",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
