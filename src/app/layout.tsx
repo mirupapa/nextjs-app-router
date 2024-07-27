@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '~/app/providers'
 import { Sidebar } from '~/components/global/sidebar/Sidebar'
+import { ToggleSidebarButton } from '~/components/global/sidebar/ToggleSidebarButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,6 +24,7 @@ export default function RootLayout({
           <div className="global_layout">
             <Sidebar />
             {children}
+            <ToggleSidebarButton />
           </div>
         </body>
       </html>
