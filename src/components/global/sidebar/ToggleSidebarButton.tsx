@@ -28,12 +28,9 @@ export const ToggleSidebarButton = () => {
         }}
         borderRadius="6px"
         cursor="pointer"
+        onClick={toggleSidebar}
       >
-        {isOpenSidebar ? (
-          <FaArrowLeftLong onClick={toggleSidebar} />
-        ) : (
-          <FaArrowRightLong onClick={toggleSidebar} />
-        )}
+        {isOpenSidebar ? <FaArrowLeftLong /> : <FaArrowRightLong />}
       </x.div>
     </animated.div>
   )
