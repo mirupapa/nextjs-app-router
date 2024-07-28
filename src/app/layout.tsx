@@ -4,6 +4,7 @@ import './globals.css'
 import Providers from '~/app/providers'
 import { Sidebar } from '~/components/global/sidebar/Sidebar'
 import { ToggleSidebarButton } from '~/components/global/sidebar/ToggleSidebarButton'
+import '../styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
