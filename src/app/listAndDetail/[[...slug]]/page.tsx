@@ -12,54 +12,37 @@ import { Detail } from '~/app/listAndDetail/Detail'
 import { mockListAndDetailData } from '~/app/listAndDetail/mockListAndDetailData'
 import { User } from '~/app/listAndDetail/type'
 import { css } from '../../../../styled-system/css'
-import Image from 'next/image'
 
 const columnHelper = createColumnHelper<User>()
 
+const StyledCell = ({ children }: { children: React.ReactNode }) => (
+  <div
+    className={css({
+      px: '12px',
+    })}
+  >
+    {children}
+  </div>
+)
+
 const columns = [
   columnHelper.accessor('username', {
-    cell: (info) => (
-      <div
-        className={css({
-          px: '12px',
-        })}
-      >
-        {info.renderValue()}
-      </div>
-    ),
+    cell: (info) => <StyledCell>{info.renderValue()}</StyledCell>,
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor('birthdate', {
     cell: (info) => (
-      <div
-        className={css({
-          px: '12px',
-        })}
-      >
-        {dayjs(info.renderValue()).format('YYYY-MM-DD')}
-      </div>
+      <StyledCell>{dayjs(info.renderValue()).format('YYYY-MM-DD')}</StyledCell>
     ),
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor('email', {
-    cell: (info) => (
-      <div
-        className={css({
-          px: '12px',
-        })}
-      >
-        {info.renderValue()}
-      </div>
-    ),
+    cell: (info) => <StyledCell>{info.renderValue()}</StyledCell>,
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor('avatar', {
     cell: (info) => (
-      <div
-        className={css({
-          px: '12px',
-        })}
-      >
+      <StyledCell>
         <img
           className={css({
             w: '50px',
@@ -67,19 +50,13 @@ const columns = [
           })}
           src={info.getValue()}
         />
-      </div>
+      </StyledCell>
     ),
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor('registeredAt', {
     cell: (info) => (
-      <div
-        className={css({
-          px: '12px',
-        })}
-      >
-        {dayjs(info.renderValue()).format('YYYY-MM-DD')}
-      </div>
+      <StyledCell>{dayjs(info.renderValue()).format('YYYY-MM-DD')}</StyledCell>
     ),
     footer: (info) => info.column.id,
   }),
