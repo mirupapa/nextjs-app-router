@@ -1,12 +1,11 @@
 'use client'
 
 import { animated, useSpring } from '@react-spring/web'
-import { x } from '@xstyled/styled-components'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useRecoilState } from 'recoil'
-import { ToggleSidebarButton } from '~/components/global/sidebar/ToggleSidebarButton'
 import { isOpenSidebarState } from '~/state/isOpenSidebarState'
+import { css } from '../../../../styled-system/css'
 
 const LinkItem = ({ path, name }: { path: string; name: string }) => {
   const currentPath = usePathname()
@@ -16,25 +15,29 @@ const LinkItem = ({ path, name }: { path: string; name: string }) => {
       ? currentPath === path
       : path !== '/' && currentPath.startsWith(path)
 
+  const isMatchStyle = css({
+    padding: '12px',
+    color: '#fff',
+    backgroundColor: '#201E43',
+    _hover: {
+      color: '#fff',
+      backgroundColor: '#134B70',
+    },
+  })
+
+  const isNotMatchStyle = css({
+    padding: '12px',
+    color: '#000',
+    backgroundColor: '#508C9B',
+    _hover: {
+      color: '#fff',
+      backgroundColor: '#134B70',
+    },
+  })
+
   return (
     <Link href={path}>
-      <x.div
-        p="12px"
-        color={{
-          _: isMatchPath
-            ? 'sidebar.linkItem.fg.active'
-            : 'sidebar.linkItem.fg.default',
-          hover: 'sidebar.linkItem.fg.hover',
-        }}
-        backgroundColor={{
-          _: isMatchPath
-            ? 'sidebar.linkItem.bg.active'
-            : 'sidebar.linkItem.bg.default',
-          hover: 'sidebar.linkItem.bg.hover',
-        }}
-      >
-        {name}
-      </x.div>
+      <div className={isMatchPath ? isMatchStyle : isNotMatchStyle}>{name}</div>
     </Link>
   )
 }
@@ -47,12 +50,20 @@ export const Sidebar = () => {
     <animated.div
       style={{ ...sidebarAnimationProps, overflow: 'hidden', flexShrink: 0 }}
     >
-      <x.nav w="200px" h="100vh" flexShrink={0} backgroundColor="sidebar.bg">
+      <nav
+        className={css({
+          width: '200px',
+          height: '100vh',
+          flexShrink: 0,
+          backgroundColor: '#508C9B',
+        })}
+      >
         <LinkItem path="/" name="Home" />
-        <LinkItem path="/xstyledTest" name="xstyled" />
+        <LinkItem path="/xstyled" name="xstyled" />
         <LinkItem path="/emotion" name="emotion" />
+        <LinkItem path="/panda" name="panda" />
         <LinkItem path="/listAndDetail" name="listAndDetail" />
-      </x.nav>
+      </nav>
     </animated.div>
   )
 }

@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typesync": "typesync"
+    "typesync": "typesync",
+    "prepare": "panda codegen"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",
@@ -26,6 +27,7 @@
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
+    "@pandacss/dev": "^0.44.0",
     "@types/eslint": "~8.56.10",
     "@types/eslint-config-prettier": "~6.11.3",
     "@types/node": "^20",

@@ -1,10 +1,10 @@
 'use client'
 
 import { animated, useSpring } from '@react-spring/web'
-import { x } from '@xstyled/styled-components'
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import { useRecoilState } from 'recoil'
 import { isOpenSidebarState } from '~/state/isOpenSidebarState'
+import { css } from '../../../../styled-system/css'
 
 export const ToggleSidebarButton = () => {
   const [isOpenSidebar, setIsOpenSidebar] = useRecoilState(isOpenSidebarState)
@@ -18,22 +18,22 @@ export const ToggleSidebarButton = () => {
     <animated.div
       style={{ ...buttonPositionProps, position: 'fixed', bottom: '10px' }}
     >
-      <x.div
-        p="12px"
-        backgroundColor={{
-          _: 'white',
-          hover: 'gray',
-        }}
-        color={{
-          _: 'black',
-          hover: 'white',
-        }}
-        borderRadius="6px"
-        cursor="pointer"
+      <div
+        className={css({
+          p: '12px',
+          backgroundColor: 'white',
+          color: 'black',
+          borderRadius: '6px',
+          cursor: 'pointer',
+          _hover: {
+            backgroundColor: 'gray',
+            color: 'white',
+          },
+        })}
         onClick={toggleSidebar}
       >
         {isOpenSidebar ? <FaArrowLeftLong /> : <FaArrowRightLong />}
-      </x.div>
+      </div>
     </animated.div>
   )
 }
