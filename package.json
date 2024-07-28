@@ -10,6 +10,9 @@
     "typesync": "typesync"
   },
   "dependencies": {
+    "@emotion/cache": "^11.13.1",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@faker-js/faker": "^8.4.1",
     "@react-spring/web": "*",
     "@tanstack/react-table": "^8.19.3",
