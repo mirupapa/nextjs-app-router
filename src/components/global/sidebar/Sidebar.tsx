@@ -1,4 +1,5 @@
 'use client'
+
 import { animated, useSpring } from '@react-spring/web'
 import { x } from '@xstyled/styled-components'
 import Link from 'next/link'
@@ -49,6 +50,7 @@ export const Sidebar = () => {
       <x.nav w="200px" h="100vh" flexShrink={0} backgroundColor="sidebar.bg">
         <LinkItem path="/" name="Home" />
         <LinkItem path="/xstyledTest" name="xstyled" />
+        <LinkItem path="/emotion" name="emotion" />
         <LinkItem path="/listAndDetail" name="listAndDetail" />
       </x.nav>
     </animated.div>
